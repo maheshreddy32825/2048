@@ -1,9 +1,5 @@
 # 2048-in-react
 
-[![Open issues][issues-badge]][issues-url]
-[![CI][lint-badge]][lint-url]
-[![CI][test-badge]][test-url]
-[![TypeScript][typescript-badge]][typescript-url]
 
 [![](.docs/demo.gif)](https://mateuszsokola.github.io/2048-in-react/)
 
