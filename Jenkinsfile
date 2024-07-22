@@ -70,7 +70,7 @@ pipeline {
         stage('Deploy To Kubernetes') { 
             steps {
                 withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'EKS-1', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://A7B57D0166AAB4AF81D511377C4B8DCD.gr7.us-east-1.eks.amazonaws.com']]) {
-                    sh 'kubectl apply -f deployment.yml'
+                    sh 'kubectl apply -f deployment.yaml'
                 }
             }
         }
