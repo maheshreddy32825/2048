@@ -17,6 +17,9 @@ spec:
           image: mamir32825/2048:latest  # Use your actual Docker image name and tag
           ports:
             - containerPort: 3000  # The port your app is listening on
+          env:
+            - name: PORT
+              value: "3000"  # The port your app is listening on inside the pod
 
 ---
 apiVersion: v1
