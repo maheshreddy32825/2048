@@ -32,44 +32,19 @@ export default function Home() {
       </main>
       <div>
         <h2>
-          🚀 <span>Learn React 18 & Next.js</span>
+          🚀 <span>Congrats you have Successfully deployed 2048 Game on EKS with Jenkins CI/CD | DevSecOps</span>
         </h2>
-        <p>
-          Join my{" "}
-          <a
-            href="https://www.udemy.com/course/2048-in-react-and-nextjs/?couponCode=50DISCOUNT"
-            target="_blank"
-            rel="noopener"
-          >
-            Udemy course
-          </a>{" "}
-          and learn React & Next.js by creating your own 2048 game from scratch.
-        </p>
       </div>
       <footer>
         <div className={styles.socials}>
           <a
-            href="https://github.com/mateuszsokola/2048-in-react"
+            href="https://github.com/maheshreddy32825/2048.git"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
-            <Image
-              src="social-github.svg"
-              alt="2048-in-react on GitHub"
-              width={32}
-              height={32}
-            />
-          </a>
-          <a href="https://twitter.com/msokola" target="_blank" rel="noopener">
-            <Image
-              src="social-twitter.svg"
-              alt="Matéush on Twitter"
-              width={32}
-              height={32}
-            />
+            Visit the GitHub Repository
           </a>
         </div>
-        <div>Made with ❤️ by Matéush</div>
       </footer>
     </div>
   );
