@@ -8,7 +8,7 @@ pipeline{
         SCANNER_HOME=tool 'sonar-scanner'
     }
     stages {
-        stage('clean workspace'){
+        stage('Clean workspace'){
             steps{
                 cleanWs()
             }
@@ -26,7 +26,7 @@ pipeline{
                 }
             }
         }
-        stage("quality gate"){
+        stage("Quality Gate"){
            steps {
                 script {
                     waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
@@ -47,6 +47,21 @@ pipeline{
         stage('TRIVY FS SCAN') {
             steps {
                 sh "trivy fs . > trivyfs.txt"
+            }
+        }
+        stage('Build & Tag & Push Docker Image'){
+            steps{
+                script{
+                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                       sh "docker build -t mamir32825/2048:latest ."
+                       sh "docker push mamir32825/2048:latest "
+                    }
+                }
+            }
+        }
+        stage('TRIVY'){
+            steps{
+                sh "trivy image mamir32825/2048:latest > trivy.txt"
             }
         }
     }
