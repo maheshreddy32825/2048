@@ -62,7 +62,7 @@ pipeline {
                 }
             }
         }
-        stage('TRIVY') {
+        stage('TRIVY Docker Image Scan') {
             steps {
                 sh 'trivy image mamir32825/2048:latest > trivy.txt'
             }
