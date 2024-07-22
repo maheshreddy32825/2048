@@ -64,5 +64,21 @@ pipeline{
                 sh "trivy image mamir32825/2048:latest > trivy.txt"
             }
         }
+        stage('Deploy To Kubernetes') { 
+            steps {
+                // Uses Kubernetes credentials to apply deployment configuration
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'EKS-1', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://A7B57D0166AAB4AF81D511377C4B8DCD.gr7.us-east-1.eks.amazonaws.com']]) {
+                }
+                    sh "kubectl apply -f deployment-service.yml"
+                }
+            }
+        }
+        
+        stage('verify Deployment') {
+            steps {
+                // Uses Kubernetes credentials to check the status of deployed services
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'EKS-1', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://A7B57D0166AAB4AF81D511377C4B8DCD.gr7.us-east-1.eks.amazonaws.com']]) {
+                    // Retrieves information about services deployed in the 'webapps' namespace
+                    sh "kubectl get svc -n webapps"
     }
 }
