@@ -1,4 +1,4 @@
-# Use Node.js 16 as the base image
+# Use Node.js 18 as the base image
 FROM node:18
 
 # Set the working directory in the container
@@ -16,8 +16,11 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Expose port 3000 for the React app
-EXPOSE 3000
+# Install serve globally to serve the static files
+RUN npm install -g serve
 
-# Start the React app
-CMD ["npm", "start"]
+# Expose port 5000 (default port used by serve)
+EXPOSE 5000
+
+# Serve the static files from the 'out' directory
+CMD ["serve", "-s", "out"]
