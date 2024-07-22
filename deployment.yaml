@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 2048-app-deployment
+  name: game-app-deployment
 spec:
   replicas: 3  # Adjust the number of replicas as needed
   selector:
     matchLabels:
-      app: 2048-app
+      app: game-app
   template:
     metadata:
       labels:
-        app: 2048-app
+        app: game-app
     spec:
       containers:
-        - name: 2048-app-container
+        - name: game-app-container
           image: mamir32825/2048:latest  # Use your actual Docker image name and tag
           ports:
             - containerPort: 3000  # The port your app is listening on
@@ -22,10 +22,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 2048-app-service
+  name: game-app-service
 spec:
   selector:
-    app: 2048-app
+    app: game-app
   ports:
     - protocol: TCP
       port: 80  # The port exposed by the service within the cluster
